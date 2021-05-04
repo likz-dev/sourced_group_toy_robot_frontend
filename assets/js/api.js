@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const BASE_URL = 'http://localhost:5000'
+export const BASE_URL = 'http://TOY-R-LoadB-C7Z3PD7GBOPK-1895894908.us-east-1.elb.amazonaws.com'
 let headers = {
   'Content-Type': 'application/json'
 }
