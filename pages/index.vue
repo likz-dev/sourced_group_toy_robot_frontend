@@ -172,13 +172,6 @@ export default {
         console.log(error)
         this.errorMessage = 'Invalid move. Robot must stay within the board.'
       })
-
-      // let newPosition = robotHelper.robotMove(this.robotDirection, this.robotPosition)
-      // if (newPosition === false) {
-      //   this.errorMessage = 'Invalid move. Robot must stay within the board.'
-      // } else {
-      //   this.robotPosition = newPosition
-      // }
     }
   },
   computed: {
