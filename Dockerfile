@@ -14,7 +14,7 @@ RUN git clone https://github.com/likz-dev/sourced_group_toy_robot_frontend /app
 RUN npm install
 
 # build app for production with minification
-RUN npm run build
+RUN npm run generate
 
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+EXPOSE 80
+CMD [ "http-server", "-p", "80", "dist" ]
