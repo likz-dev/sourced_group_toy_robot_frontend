@@ -1,4 +1,4 @@
 #!/bin/bash
 app="toy_robot_frontend.test"
-docker build --no-cache -t ${app} .
-docker run -d -p 80:80 ${app}
+docker build -t ${app} .
+docker run -d --env API_URL=test_test -p 80:80 ${app}

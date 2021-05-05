@@ -187,7 +187,7 @@ export default {
 
       api.get(`/report?session_id=${this.getSessionId()}`).then((response) => {
         let apiResponse = response.data
-        this.reportMessage = `Robot is at position [x: ${apiResponse.x}, y: ${apiResponse.y}] facing ${api.facing}`
+        this.reportMessage = `Robot is at position [x: ${apiResponse.x}, y: ${apiResponse.y}] facing ${apiResponse.facing}`
       }).catch((error) => {
         console.log(error)
         this.errorMessage = 'Oops something unexpected happened.'
