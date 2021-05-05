@@ -1,8 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
 
+console.log('STARTING')
+console.log(process.env.API_URL)
 export default {
   server: {
-    port: 80 // default: 3000
+    port: 3000 // default: 3000
   },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -72,5 +74,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  env: {
+    API_URL: process.env.API_URL
   }
 }
