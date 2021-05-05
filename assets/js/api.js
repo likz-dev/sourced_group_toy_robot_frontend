@@ -35,7 +35,10 @@ const api = {
   },
 
   get(url, params = {}) {
+    console.log('Reading env variable')
     console.log(process.env)
+    console.log(process.env.API_URL)
+    console.log('--------------------')
     return this.apiAction('get', url, {params})
   },
 
