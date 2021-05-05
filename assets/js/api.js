@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const BASE_URL = 'http://TOY-R-LoadB-C7Z3PD7GBOPK-1895894908.us-east-1.elb.amazonaws.com'
+export const BASE_URL = 'https://3nc8s0u1oa.execute-api.us-east-1.amazonaws.com/prod'
 let headers = {
   'Content-Type': 'application/json'
 }
@@ -35,6 +35,7 @@ const api = {
   },
 
   get(url, params = {}) {
+    console.log(process.env)
     return this.apiAction('get', url, {params})
   },
 

@@ -1,5 +1,12 @@
 <template>
   <v-container>
+    <v-alert v-if="errorMessage !== ''" type="error" dismissible>
+      {{ errorMessage }}
+    </v-alert>
+    <v-alert v-if="reportMessage !== ''" type="success" dismissible>
+      {{ reportMessage }}
+    </v-alert>
+
     <div id="game-board">
       <v-row
         v-for="y in rowIndexes"
@@ -83,13 +90,13 @@
         </v-btn>
       </v-row>
       <v-row style="margin-top: 20px">
-        <v-btn id="input-report" color="secondary" block>
+        <v-btn id="input-report" color="secondary" block @click="reportRobot()">
           Report
         </v-btn>
       </v-row>
-      <v-row style="color: indianred">
-        {{ errorMessage }}
-      </v-row>
+
+      <!--      <v-row style="color: indianred">-->
+      <!--      </v-row>-->
     </v-container>
 
   </v-container>
@@ -113,7 +120,8 @@ export default {
     selectedX: 0,
     selectedY: 0,
     selectedFacing: 'NORTH',
-    errorMessage: ''
+    errorMessage: '',
+    reportMessage: ''
   }),
   methods: {
     showRobot(position) {
@@ -171,6 +179,18 @@ export default {
       }).catch((error) => {
         console.log(error)
         this.errorMessage = 'Invalid move. Robot must stay within the board.'
+      })
+    },
+
+    reportRobot() {
+      this.errorMessage = ''
+
+      api.get(`/report?session_id=${this.getSessionId()}`).then((response) => {
+        let apiResponse = response.data
+        this.reportMessage = `Robot is at position [x: ${apiResponse.x}, y: ${apiResponse.y}] facing ${api.facing}`
+      }).catch((error) => {
+        console.log(error)
+        this.errorMessage = 'Oops something unexpected happened.'
       })
     }
   },
