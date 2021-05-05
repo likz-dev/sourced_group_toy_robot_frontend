@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-export const BASE_URL = 'https://3nc8s0u1oa.execute-api.us-east-1.amazonaws.com/prod'
+export const BASE_URL = process.env.API_URL || 'http://localhost:5000'
+
 let headers = {
   'Content-Type': 'application/json'
 }
@@ -35,10 +36,6 @@ const api = {
   },
 
   get(url, params = {}) {
-    console.log('Reading env variable')
-    console.log(process.env)
-    console.log(process.env.API_URL)
-    console.log('--------------------')
     return this.apiAction('get', url, {params})
   },
 

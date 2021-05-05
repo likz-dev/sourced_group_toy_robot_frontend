@@ -1,12 +1,12 @@
 FROM node:lts-alpine
 
+ARG api_url
+ENV API_URL=$api_url
+
 RUN apk --update add bash nano git curl
 
 # install simple http server for serving static content
 RUN npm install -g http-server
-
-ENV API_URL = 'test2'
-
 # make the 'app' folder the current working directory
 WORKDIR /app
 
